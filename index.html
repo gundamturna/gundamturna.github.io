@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        main{
+            height:500px;
+            width:500px;
+            margin:60px auto;
+            background-image:url(clock.jpg);
+            background-size:contain;
+            position:relative;
+            background-position: center center;
+        }
+        div{
+            position:absolute;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            
+        }
+        #d1{
+            height:240px;
+            width:2px;
+            background-color:red;
+            top:50px;
+            left:250px;
+            animation-name: sce;
+            animation-duration:60s;
+        }
+        #d2{
+            height:190px;
+            width:5px;
+            background-color: darkcyan;
+            top:90px;
+            left:248px;
+            animation-name: min;
+            animation-duration:3600s;
+            
+        }
+        #d3{
+            height:140px;
+            width:10px;
+            background-color: slateblue;
+            top:130px;
+            left:245px;
+            animation-name: hou;
+            animation-duration:43200s;
+        }
+        @keyframes sce{
+            0%{
+                transform: rotate(0deg);
+                transform-origin: center 200px;
+                }
+            100%{
+                transform: rotate(360deg);
+                 transform-origin: center 200px;
+            }
+        }
+        @keyframes min{
+            0%{
+                transform: rotate(0deg);
+                transform-origin: center 160px;
+                }
+            100%{
+                transform: rotate(360deg);
+                 transform-origin: center 160px;
+            }
+        }
+         @keyframes hou{
+            0%{
+                transform: rotate(0deg);
+                transform-origin: center 120px;
+                }
+            100%{
+                transform: rotate(360deg);
+                 transform-origin: center 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+     <main>
+         <div id="d1"></div>
+         <div id="d2"></div>
+         <div id="d3"></div>
+     </main>
+     <script>
+         var time = new Date();
+         var hour = time.getHours();
+         var minute = time.getMinutes();
+         var second = time.getSeconds();
+         if (hour>=12) {hour = hour-12};
+         var ss = 3600*hour+60*minute+second;
+         ss = -ss;
+         var miao = document.getElementById('d1');
+         var fen = document.getElementById('d2');
+         var shi = document.getElementById('d3');
+         miao.style.animationDelay = ss + 's';
+         fen.style.animationDelay = ss + 's';
+         shi.style.animationDelay = ss + 's';
+     </script>
+</body>
+</html>
